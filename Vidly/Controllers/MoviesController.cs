@@ -19,13 +19,6 @@ namespace Vidly.Controllers
             };
         }
 
-        public ViewResult Index()
-        {
-            var movies = GetMovies();
-
-            return View(movies);
-        }
-
         // GET: Movies
         public ActionResult Random()
         {
@@ -35,14 +28,13 @@ namespace Vidly.Controllers
                 Name = "Shrek !"
             };
 
-            // Creation of a new list of Customers
-            var customers = new List<Customer>()
+            var customers = new List<Customer>
             {
-                new Customer { Name = "Customer 1"},
-                new Customer { Name = "Customer 2"}
+                new Customer { Name = "Customer 1" },
+                new Customer { Name = "Customer 2" }
             };
 
-            var viewModel = new RandomMovieViewModel()
+            var viewModel = new RandomMovieViewModel
             {
                 Movie = movie,
                 Customers = customers
@@ -51,10 +43,23 @@ namespace Vidly.Controllers
             return View(viewModel);
         }
 
-        [Route("movies/released/{year}/{month:regex(\\d{4}):range(1, 12}")]
-        public ActionResult ByReleaseDate(int year, int month)
+        public ViewResult Index()
         {
-            return Content(year + "/" + month);
+            var movies = GetMovies();
+
+            return View(movies);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var movie = GetMovies().SingleOrDefault(m => m.Id == id);
+
+            if(movie == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(movie);
         }
     }
 }
