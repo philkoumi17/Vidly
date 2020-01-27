@@ -24,7 +24,7 @@ namespace Vidly.Controllers
         public ViewResult Index()
         {
             var customers = GetCustomers();
-            return View();
+            return View(customers);
         }
 
         public ActionResult Details(int id)
