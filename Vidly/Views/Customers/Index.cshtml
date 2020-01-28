@@ -46,14 +46,14 @@ else
         // To delete a record in the customer side and/or by the ID
         $(document).ready(function () {
             // When I click on the "Delete" button
-            $("#customers .js-delete").on("click", function () {
+            $("#customers").on("click", ".js-delete", function () {
                 var button = $(this);
 
                 bootbox.confirm("Are you sure to want to delete this customer ?", function(result) {
                     if(result)
                     {
                         $.ajax({
-                            url: "/api/customers/" + $(this).attr("data-customer-id"),
+                            url: "/api/customers/" + button.attr("data-customer-id"),
                             method: "DELETE",
                             success: function() {
                                 button.parents("tr").remove();
