@@ -23,6 +23,7 @@ namespace Vidly.Controllers
             _context.Dispose();
         }
 
+        // Movies's list
         public ViewResult Index()
         {
             var movies = _context.Movies.Include(m => m.Genre).ToList();
@@ -42,6 +43,7 @@ namespace Vidly.Controllers
             return View("MovieForm", viewModel);
         }
 
+        // Saving a new movie
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Save(Movie movie)
@@ -74,6 +76,7 @@ namespace Vidly.Controllers
             return RedirectToAction("Index", "Movies");
         }
 
+        // Editing a movie
         public ActionResult Edit(int id)
         {
             var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
