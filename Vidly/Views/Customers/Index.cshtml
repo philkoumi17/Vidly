@@ -17,7 +17,7 @@
 }
 else
 {
-    <table id="customers" class="table table-hover">
+    <table id="customers" class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>Customer</th>
@@ -45,6 +45,8 @@ else
     <script>
         // To delete a record in the customer side and/or by the ID
         $(document).ready(function () {
+            $("#customers").DataTable();
+
             // When I click on the "Delete" button
             $("#customers").on("click", ".js-delete", function () {
                 var button = $(this);
