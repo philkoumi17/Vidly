@@ -46,22 +46,22 @@ namespace Vidly
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
             // Uncomment the following lines to enable logging in with third party login providers
-            //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            app.UseMicrosoftAccountAuthentication(
+                clientId: "fsdfmsdfmqsdmghqsg",
+                clientSecret: "sqsfsdfsqdfsdfqsfsqfqf");
 
             //app.UseTwitterAuthentication(
             //   consumerKey: "",
             //   consumerSecret: "");
 
             app.UseFacebookAuthentication(
-                appId: "684265336556",
-                appSecret: "abcde");
+                appId: "fsdfsdsdfsd",
+                appSecret: "fsfsdfqsdfsdf");
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "63963569236666",
-                ClientSecret = "5666336666662333"
+                ClientId = "sfmlsqflmsdflsdqf",
+                ClientSecret = "gsgqsgqsgsfsfsqf"
             });
         }
     }
