@@ -49,6 +49,7 @@ namespace Vidly.Controllers
         // Saving a new movie
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Save(Movie movie)
         {
             if(!ModelState.IsValid)
@@ -80,6 +81,7 @@ namespace Vidly.Controllers
         }
 
         // Editing a movie
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Edit(int id)
         {
             var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
