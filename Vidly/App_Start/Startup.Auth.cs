@@ -47,8 +47,8 @@ namespace Vidly
 
             // Uncomment the following lines to enable logging in with third party login providers
             app.UseMicrosoftAccountAuthentication(
-                clientId: "fsdfmsdfmqsdmghqsg",
-                clientSecret: "sqsfsdfsqdfsdfqsfsqfqf");
+                clientId: "fsdfmsdmfsdqdf",
+                clientSecret: "sfmlsdqfmqsdfq");
 
             //app.UseTwitterAuthentication(
             //   consumerKey: "",
