@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
@@ -47,21 +48,21 @@ namespace Vidly
 
             // Uncomment the following lines to enable logging in with third party login providers
             app.UseMicrosoftAccountAuthentication(
-                clientId: "fsdfmsdmfsdqdf",
-                clientSecret: "sfmlsdqfmqsdfq");
+                clientId: ConfigurationManager.AppSettings["MicrosoftAppId"],
+                clientSecret: ConfigurationManager.AppSettings["MicrosoftAppSecret"]);
 
             //app.UseTwitterAuthentication(
             //   consumerKey: "",
             //   consumerSecret: "");
 
             app.UseFacebookAuthentication(
-                appId: "fsdqfdsfqsf",
-                appSecret: "dfqsdfsqdfds");
+                appId: ConfigurationManager.AppSettings["FacebookAppId"],
+                appSecret: ConfigurationManager.AppSettings["FacebookAppSecret"]);
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "sfmlsqflmsdflsdqf",
-                ClientSecret = "gsgqsgqsgsfsfsqf"
+                ClientId = ConfigurationManager.AppSettings["GoogleAppId"],
+                ClientSecret = ConfigurationManager.AppSettings["GoogleAppSecret"]
             });
         }
     }
