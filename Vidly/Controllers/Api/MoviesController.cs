@@ -26,8 +26,10 @@ namespace Vidly.Controllers.Api
                 .Include(m => m.Genre)
                 .Where(m => m.NumberAvailable > 0);
 
-            if (!String.IsNullOrWhiteSpace(query))
+            if(!String.IsNullOrWhiteSpace(query))
+            {
                 moviesQuery = moviesQuery.Where(m => m.Name.Contains(query));
+            }
 
             return moviesQuery
                 .ToList()
@@ -38,8 +40,10 @@ namespace Vidly.Controllers.Api
         {
             var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
 
-            if (movie == null)
+            if(movie == null)
+            {
                 return NotFound();
+            }
 
             return Ok(Mapper.Map<Movie, MovieDto>(movie));
         }
@@ -48,8 +52,10 @@ namespace Vidly.Controllers.Api
         [Authorize(Roles = RoleName.CanManageMovies)]
         public IHttpActionResult CreateMovie(MovieDto movieDto)
         {
-            if (!ModelState.IsValid)
+            if(!ModelState.IsValid)
+            {
                 return BadRequest();
+            }
 
             var movie = Mapper.Map<MovieDto, Movie>(movieDto);
             _context.Movies.Add(movie);
@@ -63,13 +69,17 @@ namespace Vidly.Controllers.Api
         [Authorize(Roles = RoleName.CanManageMovies)]
         public IHttpActionResult UpdateMovie(int id, MovieDto movieDto)
         {
-            if (!ModelState.IsValid)
+            if(!ModelState.IsValid)
+            {
                 return BadRequest();
+            }
 
             var movieInDb = _context.Movies.SingleOrDefault(c => c.Id == id);
 
-            if (movieInDb == null)
+            if(movieInDb == null)
+            {
                 return NotFound();
+            }
 
             Mapper.Map(movieDto, movieInDb);
 
@@ -84,8 +94,10 @@ namespace Vidly.Controllers.Api
         {
             var movieInDb = _context.Movies.SingleOrDefault(c => c.Id == id);
 
-            if (movieInDb == null)
+            if(movieInDb == null)
+            {
                 return NotFound();
+            }
 
             _context.Movies.Remove(movieInDb);
             _context.SaveChanges();

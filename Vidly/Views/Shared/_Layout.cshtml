@@ -6,6 +6,7 @@
         <title>@ViewBag.Title - Vidly</title>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
 
@@ -14,7 +15,7 @@
         @Html.Partial("_NavBar")
         <div class="container body-content">
             @RenderBody()
-            <hr/>
+            <hr />
             <footer>
                 <p>&copy; @DateTime.Now.Year - Vidly</p>
             </footer>
@@ -23,4 +24,6 @@
         @Scripts.Render("~/bundles/lib")
         @RenderSection("scripts", required: false)
     </body>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </html>
